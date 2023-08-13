@@ -1,229 +1,27 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="robots" content="noindex, nofollow" />    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Secure Billing</title>
-
-    <link rel="stylesheet" href="/join/templates/wh_invoice_expdate_non_responsive_generic/css/dist/styles.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="/join/css/decline_pop/style.css">
-</head>
-
+<html>
 <body>
-    <div class="wrap">
-        <form id="main_form" autocapitalize="off" novalidate>
-            <div style="display:none">
-                <input type="hidden" name="tour_id" value="40080">
-<input type="hidden" name="x_type" value="">
-<input type="hidden" name="pi_code" value="">
-<input type="hidden" name="country" value="RO">
-<input type="hidden" name="zip" value="060222">
-<input type="hidden" name="aid" value="113352">
-<input type="hidden" name="subid" value="webl103878">
-<input type="hidden" name="reff" value="tour">
-<input type="hidden" name="rs" value="2198">
-<input type="hidden" name="username" value="evelynvaitrhodrk">
-<input type="hidden" name="password" value="">
-<input type="hidden" name="email" value="evelynvann453@yahoo.com">
-<input type="hidden" name="user_id" value="117593401">
-<input type="hidden" name="product_id" value="47">                <input type="hidden" name="session_id" value="c54e445d5e0280a39ddd36bf23718e62" /><script type="text/javascript">
+<div class='card-wrapper'></div>
+<!-- CSS is included via this JavaScript file -->
+<script src="/path/to/card.js"></script>
+<form id="cc-form">
+    <input type="text" name="number">
+    <input type="text" name="name"/>
+    <input type="text" name="expiry"/>
+    <input type="text" name="cvc"/>
+</form>
+<script>
 
-</script>            </div>
+var card = new Card({
+    form: 'cc-form',
+    container: '.card-wrapper',
 
-            <div class="container clearfix">
-                <div class="col-0" id="focused">
-                    <div class="form-container">
-                        <header class="header">
-                            <h1 class="header-title">Secure Billing</h1>
-                            <small class="header-subtitle">You will be billed by trm23.com</small>
-                        </header>
-                        <div class="form-body">
-                            <div class="card-icons">
-                                                                    <img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/visa.svg" alt="Visa" width="57" height="38">
-                                                                                                    <img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/mastercard.svg" alt="MasterCard" width="57" height="38">
-                                                                                            </div>
-
-                            <div class="terms-block">
-                                <p class="terms-title">Payment amount</p>
-
-                                <div class="amount">$1.00</div>
-                                <div class="duration">
-                                                                            1 Day Access
-                                                                    </div>
-
-                                <p class="header_clear">&nbsp;</p>
-                            </div>
-
-                                                            <input type="hidden" name="card_exp_date" value="" id="real_expiration" />
-                                <input type="hidden" name="card_number" value="" id="real_card_number" />
-                            
-                            <div class="field" id="fullname_field">
-                                <label for="full_name">Full Name</label>
-                                <input type="text" id="full_name" name="full_name" value="" autocorrect="off" autocapitalize="off">
-                                <span class="error-msg">Enter your email address</span>
-                            </div>
-
-                            <div class="field" id="ccnum_field">
-                                <label for="ccnum">Credit Card Number</label>
-                                                                    <input type="tel" id="ccnum" name="card_number_fake" maxlength="19" value="" autocorrect="off">
-                                                                <span class="error-msg">Enter the card number</span>
-                            </div>
-
-                            <div class="split-field clearfix">
-                                                                    <div class="field col-1" id="expire_field">
-                                        <label for="expiry">Expiration Date</label>
-                                        <input type="tel" id="expiry" maxlength="5" placeholder="MM / YY" name="card_exp_date_fake" value="" autocorrect="off">
-                                        <span class="error-msg">Enter your card's expiration date</span>
-                                    </div>
-                                
-                                <div class="field col-2" id="cvv_field">
-                                    <label for="cvv">CVV</label>
-                                    <div class="input-with-icon">
-                                        <input type="tel" maxlength="3" id="cvv" name="card_cvv2" placeholder="CVV" value="" >
-                                        <span class="card-help" data-help="cvv"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/card_help.svg"/></span>
-                                        <span class="error-msg">Enter your card's CVV</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="field"></div>
-
-                            <p class="fine-print">
-                                <input class="styled-checkbox" type="checkbox" name="terms_and_conditions" id="terms_and_conditions" checked>
-                                <label for="terms_and_conditions"></label>
-                                By submitting this form, you certify that you are 18 years of age or older, you agree to the  billing terms, to the
-                                <a target="_blank" href="https://comewithyou.com/terms">terms and conditions</a>
-                                and have read the <a target="_blank" href="https://comewithyou.com/privacy">privacy policy</a>.
-                            </p>
-
-                            <div class="submit-container">
-                                <button type="submit" id="pay" class="btn-pay">
-                                    <img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon-lock.png" alt="" width="14" height="17">
-                                    Pay $1.00                                </button>
-
-                                <p class="fine-print contact-support center-text">
-                                                                            Contact <a target="_blank" href="http://trm23.com">online support</a> anytime or
-                                        call <br><span>(1-866-984-2569)</span>.
-                                                                    </p>
-
-                                <p class="fine-print center-text contact-address">
-                                    Quarry Stone Ventures Ltd. - Office F, 21-27 Hollands Road, Haverhill, Suffolk, CB9 8PU, GB                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Popup -->
-                    <div class="help-box" id="help">
-                        <div class="close">&times;</div>
-                        <div id="help-content"></div>
-                    </div>
-                    <!-- e:Popup -->
-                </div>
-                <div class="col-1">
-                    <div class="features-container">
-                        <div class="feature-container__img-wrapper">
-                            <img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/girl_blonde_2x.jpg" />
-                        </div>
-
-                        <ul class="features-list">
-                            <li class="clearfix">
-                                <div class="feature-description"></div>
-                                <div class="feature-availability feature-header--free">FREE</div>
-                                <div class="feature-availability feature-header--trial">$1 TRIAL</div>
-                            </li>
-                                                            <li class="feature clearfix">
-                                    <div class="feature-description"><div>View public photos</div></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                </li>
-                                                            <li class="feature clearfix">
-                                    <div class="feature-description"><div>Receive messages and flirts</div></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                </li>
-                                                            <li class="feature clearfix">
-                                    <div class="feature-description"><div>View public videos</div></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                </li>
-                                                            <li class="feature clearfix">
-                                    <div class="feature-description"><div>Send unlimited messages and flirts</div></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_crossed_red.svg" /></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                </li>
-                                                            <li class="feature clearfix">
-                                    <div class="feature-description"><div>View private photos of the members</div></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_crossed_red.svg" /></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                </li>
-                                                            <li class="feature clearfix">
-                                    <div class="feature-description"><div>View private videos of the members</div></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_crossed_red.svg" /></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                </li>
-                                                            <li class="feature clearfix">
-                                    <div class="feature-description"><div>Get special offers for premium users</div></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_crossed_red.svg" /></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                </li>
-                                                            <li class="feature clearfix">
-                                    <div class="feature-description"><div>Exclusive free previews for top products</div></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_crossed_red.svg" /></div>
-                                    <div class="feature-availability"><img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/icon_check_green.svg" /></div>
-                                </li>
-                                                    </ul>
-                    </div>
-                </div>
-
-                <div class="col-2">
-                    <div class="membership-container">
-                        <img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/girl_redhair_2x.jpg" />
-                        <div class="membership-secure">
-                            <img src="/join/templates/wh_invoice_expdate_non_responsive_generic/img/secure_ssl.svg"/>
-                            <div>100% Safe, Secure and Private</div>
-                        </div>
-                                                    <div class="xsales-container">
-                                <input class="styled-checkbox" type="checkbox" name="xsale" id="xsale" checked="checked">
-                                <label for="xsale"></label>
-
-                                Please, upgrade me to a VIP Membership +
-                                <p class="fine-print">* You are paying $1.00 for a 1 day membership to ComeWithYou and it will appear on your card statement as from trm23.com-18669842569. Membership renews at $42.48 every month. If we are unable to renew your membership, a $3 convenience fee will be charged.<br />** If you are a prepaid card user, $42.48 for a 30 day period will be charged for membership.</p>
-
-                                <p class="fine-print">
-                                    + Includes 2 days of trial for $1.00 to VipWebPassport.com (renews automatically at $38.42 monthly unless cancelled) and  2 days of trial for $1.00 to Pornvault.com (renews automatically at $34.82 monthly until cancelled).                                 </p>
-                            </div>
-                                            </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <!-- Decline pop -->
-    <div class="pop-overlay">
-        <div class="popup">
-            <h1>An error occurred</h1>
-
-            <div class="pop-content">
-                <img src="/join/images/decline_pop/card.jpg" alt="card image">
-
-                <p>Unfortunately, this card type is not accepted.</p>
-                <p class="text-color">Please try again with another card.</p>
-
-                <button type="button" class="btn-close">Close Message</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/join/js/jquery.min.js"><\/script>')</script>
-    <script type="text/javascript">
-        var no_mask = 0;
-    </script>
-    <script type="text/javascript" src="/join/js/join_form.js"></script>
-    <script type="text/javascript" src="/join/templates/wh_invoice_expdate_non_responsive_generic/js/invoice_expdate_new.js"></script>
-    <script type="text/javascript" src="/join/templates/wh_invoice_expdate_non_responsive_generic/js/form.js"></script>
+    placeholders: {
+        number: '**** **** **** ****',
+        name: 'Arya Stark',
+        expiry: '**/****',
+        cvc: '***'
+    }
+});
+</script>
 </body>
 </html>
