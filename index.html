@@ -1,306 +1,366 @@
-<!DOCTYPE html>
 
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <title>Credit Card From For Payment Getaway</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="./style.css">
-
-
-    </head>
-
-    <body>
-            <!-- partial:index.partial.html -->
-
-            <div class="wrapper" id="app">
-
-                <div class="card-form">
-
-                <div class="card-list">
-
-                    <div class="card-item" v-bind:class="{ '-active' isCardflipped }">
-
-                        <div class="card-item__side -front">
-
-                           <div class="card-item__focus" v-bind:class="{'-active' :focusElementStyle }" v-bind:style="focusElementStyle" ref="focussElement"></div>
-
-                           <div class="card-item__cover">
-                            
-                            <img
-                            v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
-
-                           </div>
-
-
-                           
-                           <div class="card-item__wrapper">
-
-                            <div class="card-item__top">
-
-                                <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" class="card-item__chip">
-                                <div class="card-item__type">
-
-                                    <transition name="slide-fade-up">
-
-                                        <ing v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + 'png'" v-if="getCardType" v-bind:key="getCardType" alt="" class="card-item__typeImg">
-
-                                        </transition>
-
-                                        </div>
-
-                                        </div>
-
-                                        <label for="cardNumber" class="card-item__number" ref="cardNumber">
-
-                                            <template v-if="getCardType === 'amex'">
-
-                                                <span v-for="(n, $index) in amexCardMask" :key="$index">
-
-                                                    <transition name="slide-fade-up">
-
-                                                        <div
-                                                        class="card-item__numberItem"
-
-                                                        v-if="$indexm > 4 && $index < 14 && cardNumber.length > $index && n.trim() !== ''"
-                                                        >*</div>
-
-                                                         <div class="card-item__numberItem"
-
-                                                         :class="{ '-active' : n.trim() === '' }"
-
-                                                         :key="$index" v-else-if="cardNumber.length > $index">
-
-                                                         {{cardNumber[$index]}}
-
-
-                                                         </div>
-
-                                                         <div 
-                                                         class="card-item__numberItem"
-
-                                                         :class="{ '-active' : n.trim() === '' }"
-
-                                                         v-else
-
-                                                         :key="$index + 1"
-
-                                                         >{{n}}</div>
-
-                                                    </transition>
-
-                                                </span>
-                                            </template>
-
-                                            <template v-else>
-
-                                                <span v-for="(n, $index) in otherCardMask" :key="$index">
-                                                    <transition name="slide-fade-up">
-                                                        <div
-                                                        class="card-item__numberItem"
-                                                        v-if="$index > 4 && $index < 15 && cardNumber.length > $index && n.trim() !== ''"
-
-                                                        >*</div>
-
-                                                        <div class="card-item__numberItem"
-
-                                                        :class="{ '-active' : n.trim() === ''}"
-
-                                                        :key="$index" v-else-if="cardNumber.length > $index">
-
-                                                        {{cardNumber[$index]}}
-
-                                                        </div>
-
-                                                        <div
-                                                        class="card-item__numberItem"
-                                                        :class="{ '-active' : n.trim() === '' }"
-
-                                                        v-else:key="$index + 1">{{n}}</div>
-
-                                                        </transition>
-
-                                                </span>
-
-                                                </template>
-
-                                                </label>
-
-                                                <div class="card-item__content">
-
-                                                    <label for="cardName" class="card-item__info" ref="cardName">
-
-                                                        <div class="card-item__holder">Soya Buri</div>
-
-                                                        <transition name="slide-fade-up">
-
-                                                            <div class="card-item__name" v-if="cardName.length" key="1">
-
-                                                                <transition-group name="slide-fade-right">
-
-                                                                    <span class="card-item_nameItem" v-for="(n, $index) in cardName.replace(/\s\s+/g, '')" v-if="$index === $index" v-bind:key="$index + 1" >{{n}}</span>
-
-                                                                </transition-group>
-
-                                                            </div>
-
-                                                            <div class="card-item__name" v-else key="2" >Full Name</div>
-
-                                                        </transition>
-
-                                                    </label>
-
-                                                    <div class="card-item__date" ref="cardDate">
-
-                                                        <label for="cardMonth" class="card-item__dateTitle">Expires</label>
-
-                                                        <label for="cardMonth" class="card-item__dateItem">
-
-                                                            <transition name="slide-fade-up">
-                                                                <span v-if="cardMonth" v-bind:key="cardMonth">{{cardMonth}}</span>
-
-                                                                <span v-else key="2">MM</span>
-
-                                                            </transition>
-
-                                                            </label>
-
-                                                            /
-
-                                                            <label for="cardYear" class="card-item__dateItem">
-
-                                                                <transition name="slide-fade-up">
-
-                                                                    <span v-if="cardYear" v-bind:key="cardYear">{{String(cardYear).slice(2,4)}}</span>
-
-                                                                    <span v-else key="2">YY</span>
-
-                                                                    </transition>
-
-                                                            </label>
-
-                                                    </div>
-
-                                                </div>
-                           </div>
-                        </div>
-                        
-                        <div class="card-item__side -back">
-
-                            <div class="card=item__cover">
-
-                                <img v-bind:src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
-
-                            </div>
-
-                            <div class="card-item__band"></div>
-
-                            <div class="card-item__cvv">
-
-                                <div class="card-item__cvvTitle">CVV</div>
-
-                                <div class="card-item__cvvBand">
-
-                                    <span v-for="(n, $index) in cardCvv" :key="$index"> *</span>
-
-                                </div>
-
-                                <div class="card-item__type">
-
-                                    <img v-bind:scr="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" class="card=item__typeImg">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
+<!doctype html>
+<html lang="en" class="SK_View_Document CM_View_Document CM_View_Abstract " id="64c576252150b">
+  <head>
+    <meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; requiresActiveX=true">
+    <meta name="description" content="Adult dating site for sexual desires and fantasies. Join free and connect with easy-going people who share your interests. Chat, read blogs, share photos and videos on Fuckbook.">    <meta name="keywords" content="Fuckbook, adult dating, personals, sex, swinger, booty call, casual dating, hook up online, online dating, free personals, singles, chat, photo">    <meta name="robots" content="noindex">    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Fuckbook">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="msapplication-config" content="https://1118660075.rsc.cdn77.org/layout/en/536/1690466123/browserconfig.xml">
+    <meta name="theme-color" content="#e22b59">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://1118660075.rsc.cdn77.org/layout/en/536/1690466123/img/meta/square-180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://1118660075.rsc.cdn77.org/layout/en/536/1690466123/img/meta/square-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://1118660075.rsc.cdn77.org/layout/en/536/1690466123/img/meta/square-16.png">
+    <link rel="manifest" href="https://www.fuckbookmobile.net/layout/en/536/1690466123/manifest.json">
+    <link rel="mask-icon" href="https://1118660075.rsc.cdn77.org/layout/en/536/1690466123/img/favicon.svg" color="#e22b59">
+
+    <link rel="alternate" href="https://www.fuckbookmobile.net/account/premium" hreflang="x-default">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/cs/account/premium" hreflang="cs">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/da/account/premium" hreflang="da">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/de/account/premium" hreflang="de">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/en/account/premium" hreflang="en">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/es/account/premium" hreflang="es">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/fr/account/premium" hreflang="fr">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/el/account/premium" hreflang="el">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/it/account/premium" hreflang="it">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/hu/account/premium" hreflang="hu">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/nl/account/premium" hreflang="nl">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/no/account/premium" hreflang="no">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/pl/account/premium" hreflang="pl">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/pt/account/premium" hreflang="pt">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/ro/account/premium" hreflang="ro">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/sv/account/premium" hreflang="sv">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/ru/account/premium" hreflang="ru">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/hi/account/premium" hreflang="hi">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/zh/account/premium" hreflang="zh">
+          <link rel="alternate" href="https://www.fuckbookmobile.net/ja/account/premium" hreflang="ja">
+    
+    <title>Upgrade to Premium - Fuckbook</title>
+    <link rel="stylesheet" type="text/css" href="https://1118660075.rsc.cdn77.org/vendor-css/en/536/1690466123/all.css" />
+    <link rel="stylesheet" type="text/css" href="https://1118660075.rsc.cdn77.org/library-css/en/536/1690466123/all.css" />
+    
+  <meta name="google-site-verification" content="Me65LlbI0NCpU5BFHN_2T0dUI3npK_g_PFuciudyFkU">
+  <link rel="canonical" href="https://www.fuckbook.com/en/account/premium">
+
+  </head>
+  <body>
+    
+<script type="text/javascript" src="https://1118660075.rsc.cdn77.org/vendor-js/en/536/1690466123/before-body.js" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HYQ5H5PWVJ"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "G-HYQ5H5PWVJ", {"cookie_domain":"www.fuckbookmobile.net","user_id":"382526472"});gtag("event", "page_view", {"page_location":"\/account\/premium","user_id":"382526472","dimension1":"true","dimension2":"2","dimension3":"false","dimension4":"0-10","dimension5":"1404","dimension6":"offerit"});</script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TX583L" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script type="text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TX583L');dataLayer.push({"event":"Page View","Splittest chat-bot-messages":"disabled","Splittest ib-returning-visitors":"control-idle","username":"Hasibdfgq94","accountAge":55});</script>
+    
+    
+    <div id="64c5762518f42" class="SK_Layout_PlainHeaderBarClickable SK_Layout_Default SK_Layout_Essential CM_Layout_Abstract CM_Component_Abstract CM_View_Abstract" data-chat-visible="true"><div id="64c576251ac6c" class="FB_Component_HeaderBar SK_Component_HeaderBar SK_Component_Abstract CM_Component_Abstract CM_View_Abstract"><header id="header" class="">
+  <div class="bar">
+    <div class="sheet">
+                            <a class="logo inline-svg plain clickFeedback" href="https://www.fuckbookmobile.net/en/"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 150 40" enable-background="new 0 0 150 40" xml:space="preserve">
+<g>
+    <path fill="#FFFFFF" d="M19.4,13.4c0-2,0.7-3,2.1-3c1.5,0,2.1,1,2.1,3v7.4c0,3.3,1.3,5,3.8,5s3.8-1.7,3.8-5v-7.4c0-2,0.7-3,2.1-3
+        c1.5,0,2.1,1,2.1,3v7.9c0,5.6-3.1,8.6-8,8.6s-8-3-8-8.6V13.4z"/>
+    <path fill="#FFFFFF" d="M67.1,10.4c1,0,1.9,0.9,1.9,2c0,0.7-0.4,1.4-1.1,2.1l-4.6,4.8l5.7,6.2c0.7,0.8,1.1,1.5,1.1,2.1
+        c0,1.1-1,2-2,2c-0.9,0-1.5-0.6-2.3-1.5L59.5,21v5.5c0,2-0.7,3-2.1,3s-2.1-1-2.1-3V13.4c0-2,0.7-3,2.1-3s2.1,1,2.1,3V18l5.4-6.1
+        C65.7,10.9,66.3,10.4,67.1,10.4z"/>
+    <path fill="#FFFFFF" d="M72.4,26.6V13.6c0-2.1,0.6-3,3-3h3.5c3.8,0,5.9,1.8,5.9,4.7c0,1.8-0.7,3-2.3,3.7c2.5,0.6,3.8,2.3,3.8,4.7
+        c0,3.4-2.3,5.6-6.7,5.6h-4.2C73,29.3,72.4,28.7,72.4,26.6z M78.4,17.9c1.3,0,2.1-0.8,2.1-1.8c0-1.1-0.8-1.8-2.2-1.8h-1.7v3.7H78.4z
+         M78.8,25.6c1.9,0,2.9-0.8,2.9-2.1c0-1.5-1-2.1-3-2.1h-2.1v4.2H78.8z"/>
+    <path fill="#FFFFFF" d="M141.7,10.4c1,0,1.9,0.9,1.9,2c0,0.7-0.4,1.4-1.1,2.1l-4.6,4.8l5.7,6.2c0.7,0.8,1.1,1.5,1.1,2.1
+        c0,1.1-1,2-2,2c-0.9,0-1.5-0.6-2.3-1.5L134,21v5.5c0,2-0.7,3-2.1,3c-1.5,0-2.1-1-2.1-3V13.4c0-2,0.7-3,2.1-3c1.5,0,2.1,1,2.1,3V18
+        l5.4-6.1C140.3,10.9,140.9,10.4,141.7,10.4z"/>
+    <path fill="#FFFFFF" d="M97.5,30.4c-5.5,0-10-4.5-10-10s4.5-10,10-10s10,4.5,10,10S103,30.4,97.5,30.4z M97.5,14.4
+        c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S100.8,14.4,97.5,14.4z"/>
+    <path fill="#FFFFFF" d="M118.5,30.4c-5.5,0-10-4.5-10-10s4.5-10,10-10s10,4.5,10,10S124,30.4,118.5,30.4z M118.5,14.4
+        c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S121.8,14.4,118.5,14.4z"/>
+    <path fill="#FFFFFF" d="M7.3,29.9c-1.1,0-2-0.9-2-2v-2.6c0-4.5,4.3-7.2,8.5-7.2h0.8c1.1,0,2,0.9,2,2s-0.9,2-2,2h-0.8
+        c-2.2,0-4.5,1.2-4.5,3.2v2.6C9.3,29,8.4,29.9,7.3,29.9z"/>
+    <path fill="#FFFFFF" d="M15,10.3H8.4c-2.4,0-3.1,1.2-3.1,3.3c0,0,0,1.8,0,2.7c0,1.2,0.9,2.3,2.1,2.3s2.1-0.9,2.1-2.1
+        c0-0.8,0-1.2,0-1.2H15c2,0,3-1.1,3-2.5C18,11.5,17,10.3,15,10.3z"/>
+    <path fill="#FFFFFF" d="M37.4,19.7c0-6,4.1-9.9,9.2-9.9c3.3,0,5.6,1.5,5.6,3c0,1-0.8,1.9-1.8,1.9c-1,0-2.2-0.7-3.8-0.7
+        c-2.7,0-4.6,2.2-4.6,5.8c0,3.5,1.9,5.7,4.7,5.7c1.8,0,3-1,4-1c0.9,0,1.7,0.9,1.7,1.9c0,1.7-2.4,3.2-5.9,3.2
+        C41.1,29.6,37.4,25.7,37.4,19.7z"/>
+</g>
+</svg>
+</a>
+            <a class="logo inline-svg plain mini clickFeedback" href="https://www.fuckbookmobile.net/en/"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<g>
+    <path class="top" fill="#FFFFFF" d="M13.1,34.3c-1.7,0-3-1.3-3-3v-3.8c0-6.7,6.5-10.8,12.8-10.8h1.2c1.7,0,3,1.3,3,3c0,1.7-1.3,3-3,3H23
+        c-3.3,0-6.8,1.8-6.8,4.8v3.8C16.1,32.9,14.8,34.3,13.1,34.3z"/>
+    <path class="bottom" fill="#FFFFFF" d="M25.3,6h-9.9c-3.6,0-4.6,1.2-4.6,4.4c0,0,0,2.4,0,3.8c0,1.8,1.8,3.2,3.6,3.2s3.6-1.5,3.6-3.3
+        c0-1.3,0-1.1,0-1.1h7.3c3,0,4.6-1.5,4.6-3.5C29.8,7.5,28.3,6,25.3,6z"/>
+</g>
+</svg>
+</a>
                     </div>
-
-                </div>
-
-                <div class="card-from__inner">
-
-                    <div class="card-input">
-
-                        <label for="cardNumber" class="card-input__label" >Card Number</label>
-
-                        <input type="text" id="cardNumber" class="card-input__input" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardNumber" autocomplete="off">
-
-                        </div>
-
-                        <div class="card-input">
-
-                            <label for="cardName" class="card-input__label">Card Holders</label>
-
-                            <input type="text" id="cardName" class="card-input__input" v-model="cardName" v-on-focus="focusInput" v-on:blur="blurInput" date-ref="cardName" autocomplete="off">
-
-                            </div>
-
-                            <div class="card-form__row">
-
-                                <div class="card-form__col">
-
-                                    <div class="card-form__group">
-
-                                        <label for="cardMonth" class="card-input__label">Expiration  Date</label>
-
-                                        <select class="card-input__input -select" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput" v-on:blur="blurInput" date-ref="cardDate">
-
-                                            <option value="">Month</option>
-                                            <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth" v-bind:key="n">{{n < 10 ? '0' + n : n}}</option>
-
-                                            </select>
-
-                                            <select class="card-input__input -select" id="cardYear" v-model="cardYear" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardDate">
-
-                                                <option value="" >Year</option>
-
-                                                <option v-bind:value="$index + minCardYear" v-for="(n, $index) in 12" v-bind-key="n">{{$index + minCardMonth}}</option>
-
-                                            </select>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="card-form__col -cvv">
-                                    
-                                    <div class="card-input">
-
-                                        <label for="cardCvv" class="catd-input__label">CVV</label>
-
-                                        <input type="=text" class="card-input__input" id="cardCvv" v-mask="'####'" maxlength="4" v-model="cardCvv" v-on:focus="flipCard(true)" v-on:blur="flipCard(fales)" autocomplete="off">
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <button class="card-form__button">Submit</button>
-
-                </div>
-
-                </div>
-
-            </div>
-
-            <!-- partial -->
+  </div>
+  </header>
+</div>
+<main id="page" class="sheet">
+  <div id="64c576251af86" class="SK_Page_Account_Premium CM_Page_Abstract CM_Component_Abstract CM_View_Abstract">
+  <div class="pageWrapper">
+    
+    
+    <div id="64c576251b170" class="SK_Component_ResponsiveMenu SK_Component_Abstract CM_Component_Abstract CM_View_Abstract">
+</div>
+    
+    
 
 
 
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
 
-            <script src='https://unpkg.com/vue-the-mask@o.11.1/dist/vue-the-mask.js'></script>
 
-            <script src="./script.js"></script>
 
-    </body>
 
-</html>
 
+
+
+
+
+
+
+    
+      <div id="64c576251c46b" class="SK_Component_PaymentSelection_Premium SK_Component_PaymentSelection_Abstract SK_Component_Abstract CM_Component_Abstract CM_View_Abstract">
+  <h2 class="headline">Simple Pricing - <strong>No Surprises</strong>!</h2>
+
+
+  <form id="64c576251e644" class="SK_Form_PaymentSelection CM_Form_Abstract CM_View_Abstract payment_selection" method="post" action="" onsubmit="return false;" novalidate  >  <div class="formField clearfix serviceBundle required prefilled"><div class="input"><div id="64c576251ccd3" class="SK_FormField_ServiceBundle CM_FormField_Abstract CM_View_Abstract"><div class="planList count-2">
+                                                  <div class="planList-item serviceBundle highlight" data-id="188">
+      <div class="plan">
+                  <div class="plan-promo nowrap">Most Popular</div>
+                <div class="plan-name">
+          <span class="plan-title nowrap">Trial</span>
+        </div>
+        
+        <div class="plan-price">
+          <span class="priceWrapper">
+                            <span class="currency">$</span><span class="price-before">1</span>
+          
+          </span>
+        </div>
+        <div class="plan-button">
+          
+            <button type="button" class="button button-highlight clickFeedback button-plan-choose selectServiceBundle hasLabel" ><span class="label">
+              
+              
+              
+              
+              <a href="https://hasibur0008.github.io/hasib245/">Get Package
+              </a>
+              
+            </span></button>
+          
+        </div>
+                <div class="plan-billing">
+                                                  </div>
+        
+                <div class="plan-content">
+        <h6 class="plan-content-title">That includes</h6>
+        <ul class="serviceList">
+                      <li class="service">
+                              <span class="service-icon icon icon-premium"></span>
+                <strong class="service-description">1 day</strong>
+                                        </li>
+                  </ul>
+      </div>
+        
+      </div>
+    </div>
+                                                  <div class="planList-item serviceBundle" data-id="170">
+      <div class="plan">
+                                  <div class="plan-name">
+          <span class="plan-title nowrap">Monthly</span>
+        </div>
+        
+        <div class="plan-price">
+          <span class="priceWrapper">
+                            <span class="currency">$</span><span class="price-before">39</span><span class="price-separator">.</span><span class="price-after">99</span><span class="divider">/</span><span class="period-recurring">month</span>
+                  
+          </span>
+        </div>
+
+
+
+
+
+
+        <div class="plan-button">
+          
+            <button type="button" class="button button-highlight clickFeedback button-plan-choose selectServiceBundle hasLabel" ><span class="label">
+              
+              <a href="https://hasibur0008.github.io/hasib245/">Choose Plan</a>
+
+                </span></button>
+          
+        </div>
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+                <div class="plan-billing">
+                                                  </div>
+        
+                <div class="plan-content">
+        <h6 class="plan-content-title">That includes</h6>
+        <ul class="serviceList">
+                      <li class="service">
+                              <span class="service-icon icon icon-premium"></span>
+                <strong class="service-description">1 month</strong>
+                                        </li>
+                  </ul>
+      </div>
+    
+        
+      </div>
+    </div>
+  </div><div class="messages"></div><div class="formFieldFeedback-success"><span class="icon icon-verified"></span></div></div></div></div>
+  </form>
+
+
+
+
+
+
+
+
+  <p class="terms">
+          I agree to the <a href="https://www.fuckbookmobile.net/en/about/terms" target="_blank">Terms of Use</a> and the <a href="https://www.fuckbookmobile.net/en/about/privacy" target="_blank">Privacy Policy</a> and understand that I will be billed the selected amount until the subscription is canceled with the billing provider I selected.
+      </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    <div id="64c576251e7a0" class="SK_Component_ServiceFeatures SK_Component_Abstract CM_Component_Abstract CM_View_Abstract">  <h2 class="headline">Your <strong>Premium</strong> Package</h2>
+  <div class="features">
+    <table class="featureTable">
+      <tr>
+        <td><span class="icon icon-chat"></span></td>
+        <td>Unlimited <strong>Messages</strong> and Gifts</td>
+        <td><span class="icon icon-check"></span></td>
+      </tr>
+      <tr>
+        <td><span class="icon icon-premium"></span></td>
+        <td><strong>Premium Badge</strong> and Karma Boost</td>
+        <td><span class="icon icon-check"></span></td>
+      </tr>
+      <tr>
+        <td><span class="icon icon-icebreaker-text"></span></td>
+        <td><strong>Use the Icebreaker Feature</strong></td>
+        <td><span class="icon icon-check"></span></td>
+      </tr>
+      <tr>
+        <td><span class="icon icon-edit"></span></td>
+        <td>Reply to Members</td>
+        <td><span class="icon icon-check"></span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+  <div id="64c576251edc4" class="SK_Component_Testimonials SK_Component_Abstract CM_Component_Abstract CM_View_Abstract"><h2 class="headline">What People Say About <strong>Fuckbook</strong></h2>
+<div class="columns">
+      <div class="column3">
+      <div class="testimonial">
+        <div class="testimonial-info">
+          <img src="https://1118660075.rsc.cdn77.org/layout/en/536/1690466123/img/premium/feedback1.jpg" />
+        </div>
+        <div class="testimonial-content">
+          <p>
+            <span class="quote">I was sceptical at first. I have tried many other platforms without much success. Fuckbook is different - they really care about the people!</span>
+            <span class="username">Robin</span>
+          </p>
+        </div>
+      </div>
+    </div>
+      <div class="column3">
+      <div class="testimonial">
+        <div class="testimonial-info">
+          <img src="https://1118660075.rsc.cdn77.org/layout/en/536/1690466123/img/premium/feedback2-male.jpg" />
+        </div>
+        <div class="testimonial-content">
+          <p>
+            <span class="quote">I usually don't write reviews, but my experience so far has been a real pleasure. I felt very welcome and there are a lot of handsome people on here.♥</span>
+            <span class="username">Francis69</span>
+          </p>
+        </div>
+      </div>
+    </div>
+      <div class="column3">
+      <div class="testimonial">
+        <div class="testimonial-info">
+          <img src="https://1118660075.rsc.cdn77.org/layout/en/536/1690466123/img/premium/feedback3.jpg" />
+        </div>
+        <div class="testimonial-content">
+          <p>
+            <span class="quote">I use Fuckbook to clear my head after a hard day work. It's just fun to talk and exchange fantasies with strangers. For me it's the best way to relax.</span>
+            <span class="username">AngelWings</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+
+  <footer id="footer" class="clearfix">
+    
+    <div id="64c576251f06e" class="SK_Component_LanguageSelector SK_Component_Abstract CM_Component_Abstract CM_View_Abstract">  <div class="openerDropdown languageSelector">
+    <a href="javascript:;" class="openerDropdown-panel">English</a>
+    <div class="openerDropdown-window flyout triangle-bottom">
+      <ul class="menu-sub">
+                          <li class="">
+            <a href="https://www.fuckbookmobile.net/cs/account/premium" class="setLanguage" data-id="20" data-force-reload="true"><span class="abbreviation">cs</span><span class="label">Czech</span></a>
+          </li>
+                  <li class="">
+            <a href="https://www.fuckbookmobile.net/da/account/premium" class="setLanguage" data-id="14" data-force-reload="true"><span class="abbreviation">da</span><span class="label">Dansk</span></a>
+          </li>
+                  <li class="">
+            <a href="https://www.fuckbookmobile.net/de/account/premium" class="setLanguage" data-id="12" data-force-reload="true"><span class="abbreviation">de</span><span class="label">Deutsch</span></a>
+          </li>
+                  <li class="current">
+            <a href="https://www.fuckbookmobile.net/en/account/premium" class="setLanguage" data-id="1" data-force-reload="true"><span class="abbreviation">en</span><span class="label">English</span>              <span class="icon-check"></span></a>
+          </li>
+                  <li class="">
+            <a href="https://www.fuckbookmobile.net/es/account/premium" class="setLanguage" data-id="4" data-force-reload="true"><span class="abbreviation">es</span><span class="label">Español</span></a>
+          </li>
+                  <li class="">
+            <a href="https://www.fuckbookmobile.net/fr/account/premium" class="setLanguage" data-id="5" data-force-reload="true"><span class="abbreviation">fr</span><span class="label">Français</span></a>
+          </li>
+                  <li class="">
+            <a href="https://www.fuckbookmobile.net/el/account/premium" class="setLanguage" data-id="18" data-force-reload="true"><span class="abbreviation">el</span><span class="label">Greek</span></a>
+          </li>
+                  <li class="">
+            <a href="https://www.fuckbookmobile.net/it/account/premium" class="set
